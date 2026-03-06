@@ -1,0 +1,33 @@
+PROJEKT 3 — E-Commerce ML Platform ⬅ W BUDOWIE
+Tematyka: E-commerce / UK Dataset: Online Retail II (UCI / Kaggle) — ~1,07M transakcji, 2009–2011 → przesunięte na 2023–2025
+Stack:
+* Azure Data Lake Storage Gen2 → Bronze / Silver / Gold
+* Azure Databricks + PySpark → ETL + Feature Engineering + ML
+* MLflow → tracking eksperymentów, wersjonowanie modeli
+* Delta Lake → format tabel (ACID, time travel)
+* Azure Synapse Analytics → Gold Layer pod Power BI
+* Power BI → 5-stronicowy dashboard (Import Mode)
+* Python → modyfikacja i wzbogacenie datasetu
+Wzbogacenie datasetu:
+* Przesunięcie dat +15 lat (2025 wygląda aktualnie)
+* Kategorie produktów — keyword matching na Description (Christmas, Home Decor, Kitchen, Gifts, Seasonal, Stationery)
+* Margin per produkt — deterministyczny hash MD5 per StockCode (15–65%)
+* Channel — Online Direct / Mobile App / Marketplace
+* Device — Desktop / Mobile / Tablet
+* dim_campaign — 8 kampanii (Black Friday, Christmas, Valentine's...) z datami i rabatami
+* fact_returns — zwroty wyodrębnione z ujemnych Quantity + return_reason
+* lifecycle_stage — New / Developing / Active / Loyal / Dormant
+* Zewnętrzne dane makro — UK Retail Sales Index (ONS) złączony po roku/miesiącu
+Modele ML:
+* RFM + KMeans Clustering → 5 segmentów: Champions, Loyal, Promising, At Risk, Lost
+* XGBoost Churn Prediction → czy klient kupi w 90 dni (target accuracy ~83%)
+* CLV Scoring → prognoza wartości klienta na 12 miesięcy
+Power BI — 5 stron:
+* Executive Command Center → Health Score gauge, decomposition tree, anomalie oznaczone, Revenue z liniami kampanii
+* Customer Intelligence Map → scatter RFM (każda kropka = klient), mapa bubble CLV per kraj, filtrowanie per segment
+* Churn Risk War Room → "£127k Revenue at Risk", tabela Top 50 klientów do uratowania z rekomendowaną akcją, gauge At Risk %
+* Product DNA → macierz Stars/Cash Cows/Dogs/Question Marks (margin vs volume), heatmapa sezonowości kategorii
+* Cohort Retention Heatmapa → macierz kohortowa z conditional formatting zielony→czerwony, krzywa retencji per segment
+Co pokazuje rekruterowi: Databricks, PySpark, MLflow, Delta Lake, ML w pipeline, analytics engineering, insights biznesowe a nie tylko architektura
+
+pomozesz mi przy budowei tego projektu od zera zacznijmy od repo i jego nazyw
