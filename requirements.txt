@@ -1,0 +1,21 @@
+# Core
+pandas==3.0.1
+numpy==2.4.3
+pyarrow==18.1.0
+openpyxl==3.1.5
+
+# API calls
+requests==2.32.3
+
+# Analysis
+mlxtend==0.23.2
+scikit-learn==1.8.0
+scipy==1.17.1
+
+# Visualization (notebooks only)
+matplotlib==3.9.3
+seaborn==0.13.2
+
+# Utils
+python-dotenv==1.0.1
+tqdm==4.67.1

@@ -1,0 +1,8 @@
+﻿segment_key,segment_name,segment_group,sort_order,lifecycle_rank
+1,Champions,Core,1,6
+2,Loyal,Core,2,5
+3,Recent Buyers,Growth,3,4
+4,Promising,Growth,4,3
+5,At Risk,Risk,5,2
+6,Lost,Risk,6,1
+0,Guest,Other,7,0
