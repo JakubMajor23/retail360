@@ -1,5 +1,7 @@
 # 🏪 Retail360 — CRM & Customer Intelligence Analytics (PL)
 
+[![English Version](https://img.shields.io/badge/English-Version-blue?style=for-the-badge)](README.md)
+
 Retail360 to kompleksowy projekt analityczny transformujący surowe dane transakcyjne e-commerce w gotowy do działania, 3-stronicowy dashboard operacyjny. Projekt demonstruje pełen cykl analityczny: od ekstrakcji i zaawansowanego czyszczenia danych (Python/Pandas), przez budowę dedykowanego modelu Star Schema (Data Engineering), aż po wizualizację ukierunkowaną na konkretne decyzje biznesowe (Power BI).
 
 ---
