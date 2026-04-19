@@ -194,12 +194,3 @@ erDiagram
 *   **Jupyter Notebook:** Pipeline development.
 *   **Power BI:** Visualization & DAX.
 *   **Mermaid:** Architecture documentation.
-
----
-
-## 🚀 Getting Started
-
-1.  **Download Source Data:** Place `online_retail_II.xlsx` in the `data/raw/` folder.
-2.  **Run ETL:** Execute the `ETL.ipynb` notebook to generate CSV tables in `star_schema/`.
-3.  **Open Dashboard:** Load the Power BI (`.pbix`) file.
-4.  **Refresh:** Point the data sources to your local CSV files and refresh.
