@@ -5,6 +5,7 @@
 Retail360 to analityczny projekt e-commerce obejmujący proces ETL (Python/Pandas), budowę modelu Star Schema oraz warstwę wizualizacyjną w postaci 3-stronicowego dashboardu operacyjnego w Power BI.
 
 Źródłem danych dla projektu jest zestaw UCI Online Retail II, zawierający dane transakcyjne z brytyjskiego e-commerce oferującego upominki i dekoracje, obejmujący okres od grudnia 2009 do grudnia 2011 roku. W procesie ETL surowe transakcje wzbogacono o kluczowe atrybuty analityki klienckiej, takie jak: segmentacja RFM, punktowy wskaźnik ryzyka (Risk Score), estymacja CLV oraz zautomatyzowane rekomendacje działań CRM.
+
 ---
 
 ## 📊 Kontekst Biznesowy i Uzasadnienie Projektu (Business Case)
