@@ -66,8 +66,6 @@ Proces przygotowania danych (zapisany w pliku `ETL.ipynb`) przekształca surowy 
 
 ## 🗄️ Model Danych (Star Schema)
 
-> 🔗 **Zobacz szczegółową [Dokumentację i Diagram Bazy Danych](SCHEMA_DIAGRAM.md)**
-
 ```mermaid
 erDiagram
     dim_date {
