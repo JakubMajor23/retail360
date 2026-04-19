@@ -76,9 +76,7 @@ The data preparation process (saved in the `ETL.ipynb` file) transforms the raw 
 
 ---
 
-## 🗄️ Data Model (Star Schema)
-
-High-performance schema optimized for the **VertiPaq** engine in Power BI. 
+# 🗄️ Data Model (Star Schema)
 
 ```mermaid
 erDiagram
