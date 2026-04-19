@@ -34,6 +34,7 @@ Raport jest ułożony w logiczną ścieżkę: **STATUS** → **ALARM** → **AKC
 **Pytanie:** *"Jak wygląda nasza baza klientów TERAZ?"*
 **Cel:** 30-sekundowy, błyskawiczny przegląd zdrowia bazy i trendów sprzedażowych. Odbiorca od razu widzi, gdzie leżą pieniądze i czy są powody do obaw.
 **Zawartość ekranu** Kluczowe KPI finansowe i frekwencyjne. Wykresy zderzające strukturę generowanych przychodów z wolumenem klientów w poszczególnych segmentach oraz analiza trendów miesięcznych.
+
 **Decyzja**: Kompleksowa ocena stabilności finansowej, pozwalająca zweryfikować z jakich grup klientów pochodzi miesięczny wynik, czy firma nie jest nadmiernie uzależniona od segmentu Champions oraz jak przebiega długoterminowa migracja bazy.
 
 ### 2. Churn Risk (Ryzyko Odejścia i Akcje Ratunkowe)
@@ -47,6 +48,7 @@ Raport jest ułożony w logiczną ścieżkę: **STATUS** → **ALARM** → **AKC
 **Pytanie:** *"Jak targetować kampanie, aby zmaksymalizować ROI?"*
 **Cel:** Optymalizacja taktyczna kampanii marketingowych.
 *   **Zawartość ekranu** Interaktywna heatmapa rozkładu zamówień w czasie (dni tygodnia/godziny) oraz analiza jakościowa segmentów (Średnia Wartość Zamówienia – AOV, Wskaźnik Zwrotów). Dodatkowo ranking topowych produktów.
+  
 *   **Decyzje biznesowe:** Personalizacja harmonogramu komunikacji (e-mail/SMS) dopasowana do pików aktywności danego segmentu oraz projektowanie skutecznych kampanii marketingowych z dedykowanymi rekomendacjami, bazującymi na tym, co ta konkretna grupa kupuje najchętniej.
 ---
 
