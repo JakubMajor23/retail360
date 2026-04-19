@@ -13,10 +13,10 @@ The primary users are **Heads of CRM**, **Customer Strategy Managers**, and **Ac
 
 ### ❓ The Problem: "Analytical Myopia"
 Many e-commerce businesses operate reactively, leading to:
-*   **"Spray and Pray" Marketing:** Generic campaigns sent to the entire database (e.g., 5,000+ customers) without personalization.
-*   **Budget Leakage:** Discounts being sent to "Champions" who would have purchased anyway.
-*   **Silent Churn:** Ignoring "At Risk" customers until they have already transitioned to "Lost."
-*   **Poor Resource Allocation:** Marketing teams guessing when to communicate and what products to offer.
+* **"Spray and Pray" Marketing:** Generic campaigns sent to the entire database (e.g., 5,000+ customers) without personalization.
+* **Budget Leakage:** Discounts being sent to "Champions" who would have purchased anyway.
+* **Silent Churn:** Ignoring "At Risk" customers until they have already transitioned to "Lost."
+* **Poor Resource Allocation:** Marketing teams guessing when to communicate and what products to offer.
 
 ### 💡 The Solution & Business Value
 This dashboard shifts the organization from **reactive** to **proactive**. Instead of just reporting what happened, it tells managers **what to do next**. It enables precise RFM segmentation, automated Churn Risk scoring, and actionable recommendations that directly impact **Customer Lifetime Value (CLV)** and marketing ROI.
@@ -28,31 +28,28 @@ This dashboard shifts the organization from **reactive** to **proactive**. Inste
 The dashboard follows a logical flow: **STATUS → ALARM → ACTION**.
 
 ### 1. Health Check (Customer Base Vitality)
-**Key Question:** *"What is the state of our customer base RIGHT NOW?"*
-**Objective:** A 30-second situational overview to identify where the money is and find reasons for concern.
+**Key Question:** *"What is the state of our customer base RIGHT NOW?"* **Objective:** A 30-second situational overview to identify where the money is and find reasons for concern.
 
 ![Health Check Dashboard](photos/d1.png)
 
-*   **Visuals:** KPI tiles showing active customer ratio and "Top 20% Revenue Share". Bar charts comparing volume vs. revenue structure.
-*   **Business Decisions:** Assessing financial security and monitoring macro trends (growing vs. stagnating base).
+* **Visuals:** KPI tiles showing active customer ratio and "Top 20% Revenue Share". Bar charts comparing volume vs. revenue structure.
+* **Business Decisions:** Assessing financial security and monitoring macro trends (growing vs. stagnating base).
 
 ### 2. Churn Risk (Revenue Salvation)
-**Key Question:** *"Who are we losing RIGHT NOW and what is the cost?"*
-**Objective:** An operational view to calculate the value of "money at risk" and trigger rescue actions.
+**Key Question:** *"Who are we losing RIGHT NOW and what is the cost?"* **Objective:** An operational view to calculate the value of "money at risk" and trigger rescue actions.
 
 ![Churn Risk Dashboard](photos/d2.png)
 
-*   **Visuals:** "Total CLV at Risk" tiles, "Risk Tier Distribution" (Healthy, Watchlist, Critical), and a drill-through table of specific customers.
-*   **Business Decisions:** Prioritizing Account Manager workflows for "Win-back" campaigns.
+* **Visuals:** "Total CLV at Risk" tiles, "Risk Tier Distribution" (Healthy, Watchlist, Critical), and a drill-through table of specific customers.
+* **Business Decisions:** Prioritizing Account Manager workflows for "Win-back" campaigns.
 
 ### 3. Behavior & Patterns (Campaign Optimization)
-**Key Question:** *"How should we target campaigns to maximize conversion?"*
-**Objective:** Provide hard data for the Marketing Department.
+**Key Question:** *"How should we target campaigns to maximize conversion?"* **Objective:** Provide hard data for the Marketing Department.
 
 ![Behavior & Patterns Dashboard](photos/d3.png)
 
-*   **Visuals:** AOV and Return Rate analysis by segment, purchase heatmap (days/hours), and "Top Products" list.
-*   **Business Decisions:** Scheduling targeted newsletters (e.g., Sunday 6:00 PM) based on segment behavior.
+* **Visuals:** AOV and Return Rate analysis by segment, purchase heatmap (days/hours), and "Top Products" list.
+* **Business Decisions:** Scheduling targeted newsletters (e.g., Sunday 6:00 PM) based on segment behavior.
 
 ---
 
@@ -61,14 +58,14 @@ The dashboard follows a logical flow: **STATUS → ALARM → ACTION**.
 The data preparation process (found in `ETL.ipynb`) transforms raw transaction logs (UCI Online Retail II dataset, 2009-2011) into a clean, analytical Star Schema.
 
 ### 🧹 Cleaning & Extraction:
-*   **Guest Handling:** Assigned `customer_id = 0` to unregistered users instead of deleting them (~23% of total sales).
-*   **Noise Removal:** Filtered out operational non-sales entries (POSTAGE, test logs).
-*   **Financial Standardization:** Flagged returns and unified product metadata.
+* **Guest Handling:** Assigned `customer_id = 0` to unregistered users instead of deleting them (~23% of total sales).
+* **Noise Removal:** Filtered out operational non-sales entries (POSTAGE, test logs).
+* **Financial Standardization:** Flagged returns and unified product metadata.
 
 ### 🧪 Advanced Feature Engineering:
-*   **RFM Segmentation:** Programmatic assignment to groups: *Champions, Loyal, Recent Buyers, Promising, At Risk, Lost*.
-*   **Risk Score (0-100):** A custom scoring algorithm calculating churn probability based on segment, recency, and frequency.
-*   **Automated Recommendations:** Automatically assigns recommended actions (e.g., *Upsell, Win-back, Personal Outreach*).
+* **RFM Segmentation:** Programmatic assignment to groups: *Champions, Loyal, Recent Buyers, Promising, At Risk, Lost*.
+* **Risk Score (0-100):** A custom scoring algorithm calculating churn probability based on segment, recency, and frequency.
+* **Automated Recommendations:** Automatically assigns recommended actions (e.g., *Upsell, Win-back, Personal Outreach*).
 
 ---
 
@@ -182,7 +179,6 @@ erDiagram
     dim_customer ||--o{ fct_customer_migration : customer
     dim_date ||--o{ fct_customer_migration : month_from_to
     dim_segment ||--o{ fct_customer_migration : segment_from_to
-```
 
 ---
 
