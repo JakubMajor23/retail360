@@ -76,7 +76,7 @@ The data preparation process (saved in the `ETL.ipynb` file) transforms the raw 
 
 ---
 
-# 🗄️ Data Model (Star Schema)
+## 🗄️ Model Danych (Star Schema)
 
 ```mermaid
 erDiagram
@@ -184,7 +184,7 @@ erDiagram
     dim_customer ||--o{ fct_customer_migration : customer
     dim_date ||--o{ fct_customer_migration : month_from_to
     dim_segment ||--o{ fct_customer_migration : segment_from_to
-
+```
 ---
 
 ## 🛠️ Technology Stack
