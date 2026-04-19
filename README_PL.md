@@ -2,21 +2,23 @@
 
 [![English Version](https://img.shields.io/badge/English-Version-blue?style=for-the-badge)](README.md)
 
-Retail360 to kompleksowy projekt analityczny transformujący surowe dane transakcyjne e-commerce w gotowy do działania, 3-stronicowy dashboard operacyjny. Projekt demonstruje pełen cykl analityczny: od ekstrakcji i zaawansowanego czyszczenia danych (Python/Pandas), przez budowę dedykowanego modelu Star Schema (Data Engineering), aż po wizualizację ukierunkowaną na konkretne decyzje biznesowe (Power BI).
+Retail360 to analityczny projekt e-commerce obejmujący proces ETL (Python/Pandas), budowę modelu Star Schema oraz warstwę wizualizacyjną w postaci 3-stronicowego dashboardu operacyjnego w Power BI.
 
+Źródłem danych dla projektu jest zestaw UCI Online Retail II, zawierający dane transakcyjne z brytyjskiego e-commerce oferującego upominki i dekoracje, obejmujący okres od grudnia 2009 do grudnia 2011 roku. W procesie ETL surowe transakcje wzbogacono o kluczowe atrybuty analityki klienckiej, takie jak: segmentacja RFM, punktowy wskaźnik ryzyka (Risk Score), estymacja CLV oraz zautomatyzowane rekomendacje działań CRM.
 ---
 
 ## 📊 Kontekst Biznesowy i Uzasadnienie Projektu (Business Case)
 
+Raport jest w 100% zorientowany na analitykę kliencką (Customer-Centric).
+
 ### 🎯 Dla kogo jest ten projekt?
-Głównym odbiorcą raportu jest **Head of CRM (Dyrektor ds. Relacji z Klientami)**, **Customer Strategy Manager** oraz **Account Managerzy**. Raport jest w 100% zorientowany na klienta (Customer-Centric), a nie stricte na finanse czy logistykę.
+Głównym odbiorcą raportu jest **Head of CRM (Dyrektor ds. Relacji z Klientami)**, **Customer Strategy Manager** oraz **Account Managerzy**.
 
 ### ❓ Jaki problem rozwiązujemy?
-Wielu sprzedawców e-commerce cierpi na "analityczną krótkowzroczność" i działa w sposób reaktywny. Główne problemy to:
-*   **Brak personalizacji ("Spray and Pray"):** Firma wysyła generyczne kampanie z rabatami do całej bazy (np. 5000 klientów).
-*   **Przepalanie budżetu:** Zniżki trafiają do segmentu "Champions", którzy i tak by kupili bez zachęty.
-*   **Cichy Churn (Odejścia):** Firma ignoruje segment "At Risk" do momentu, aż klienci trwale odejdą do konkurencji (stając się segmentem "Lost").
-*   **Zła alokacja zasobów:** Dział marketingu strzela w ciemno, nie wiedząc, o jakiej porze komunikować się z poszczególnymi profilami ani co im zaoferować.
+*   **Brak personalizacji:** Firma często wysyła generyczne kampanie do całej bazy, co jest nieefektywne.
+*   **Przepalanie budżetu:** Udzielanie rabatów lojalnym klientom, którzy i tak by kupili.
+*   **Cichy Churn (Odejścia):** Ignorowanie klientów z grupy ryzyka do momentu, aż trwale odejdą do konkurencji.
+*   **Zła alokacja zasobów:** Działania marketingowe podejmowane bez znajomości wzorców godzinowych i produktowych poszczególnych segmentów.
 
 ### 💡 Rozwiązanie i Wartość Biznesowa
 Dashboard przesuwa organizację z podejścia reaktywnego na proaktywne. Zamiast patrzeć na to, co się wydarzyło, menedżerowie dostają narzędzia mówiące co należy teraz zrobić. Pozwala to na precyzyjną segmentację (RFM), wyliczanie ryzyka odejścia (Risk Score) i automatyczne rekomendacje akcji, co bezpośrednio przekłada się na ratowanie przychodów (Customer Lifetime Value) i optymalizację kosztów marketingu.
@@ -25,35 +27,25 @@ Dashboard przesuwa organizację z podejścia reaktywnego na proaktywne. Zamiast 
 
 ## 🖥️ Architektura Dashboardu — Co odbiorca czyta z danych?
 
-Dashboard składa się z 3 logicznie połączonych stron, prowadzających użytkownika od ogółu do konkretnej akcji: **STATUS → ALARM → AKCJA**.
+Raport jest ułożony w logiczną ścieżkę: STATUS → ALARM → AKCJA.
 
 ### 1. Health Check (Zdrowie Bazy Klientów)
 **Pytanie:** *"Jak wygląda nasza baza klientów TERAZ?"*
-**Cel:** 30-sekundowy przegląd sytuacji — gdzie leżą pieniądze i czy są powody do obaw.
-
-![Dashboard - Health Check](photos/d1.png)
-
-*   **Visuals:** Kafelki KPI (odsetek aktywnych klientów, Top 20% Revenue Share). Wykresy słupkowe zderzające strukturę wolumenową z przychodową.
-*   **Decyzje biznesowe:** Ocena bezpieczeństwa finansowego i monitorowanie makro-trendów.
+**Cel:** 30-sekundowy, błyskawiczny przegląd zdrowia bazy i trendów sprzedażowych. Odbiorca od razu widzi, gdzie leżą pieniądze i czy są powody do obaw.
+**Zawartość ekranu** Kluczowe KPI finansowe i frekwencyjne. Wykresy zderzające strukturę generowanych przychodów z wolumenem klientów w poszczególnych segmentach oraz analiza trendów miesięcznych.
+**Decyzja**: Kompleksowa ocena stabilności finansowej, pozwalająca zweryfikować z jakich grup klientów pochodzi miesięczny wynik, czy firma nie jest nadmiernie uzależniona od segmentu Champions oraz jak przebiega długoterminowa migracja bazy.
 
 ### 2. Churn Risk (Ryzyko Odejścia i Akcje Ratunkowe)
 **Pytanie:** *"Kogo tracimy TERAZ i ile to nas kosztuje?"*
-**Cel:** Strona stricte operacyjna, wyliczająca wartość zagrożonych pieniędzy.
-
-![Dashboard - Churn Risk](photos/d2.png)
-
-*   **Visuals:** Total CLV at Risk, "Risk Tier Distribution" (Healthy, Watchlist, Critical) oraz szczegółowa tabela klientów.
-*   **Decyzje biznesowe:** Priorytetyzacja pracy Account Managerów i telefonów ratunkowych.
+**Cel:** Identyfikacja klientów wymagających interwencji.
+*   **Zawartość ekranu:** KPI zagrożonego kapitału (CLV) i wskaźnika odejść (Churn Rate). Wykresy dystrybucji ryzyka, ranking rekomendowanych akcji oraz mapa proporcji segmentów. Operacyjna tabela z listą klientów i przypisanymi działaniami ratunkowymi.
+*   **Decyzje biznesowe:** Punktowa, precyzyjna alokacja budżetu ratunkowego (np. ekskluzywne rabaty, telefony od handlowców) wyłącznie dla klientów o wysokim CLV i krytycznym Risk Score.
 
 ### 3. Behavior & Patterns (Wzorce Behawioralne)
-**Pytanie:** *"Jak targetować kampanie, aby zmaksymalizować konwersję?"*
-**Cel:** Dostarcza twardych danych dla działu marketingu.
-
-![Dashboard - Behavior & Patterns](photos/d3.png)
-
-*   **Visuals:** Analiza AOV i Return Rate, macierz (Heatmap) dni i godzin zakupów oraz tabela "Top Products".
-*   **Decyzje biznesowe:** Optymalizacja czasu wysyłki newsletterów i dobór asortymentu pod segmenty.
-
+**Pytanie:** *"Jak targetować kampanie, aby zmaksymalizować ROI?"*
+**Cel:** Optymalizacja taktyczna kampanii marketingowych.
+*   **Zawartość ekranu** Interaktywna heatmapa rozkładu zamówień w czasie (dni tygodnia/godziny) oraz analiza jakościowa segmentów (Średnia Wartość Zamówienia – AOV, Wskaźnik Zwrotów). Dodatkowo ranking topowych produktów.
+*   **Decyzje biznesowe:** Personalizacja harmonogramu komunikacji (e-mail/SMS) dopasowana do pików aktywności danego segmentu oraz projektowanie skutecznych kampanii marketingowych z dedykowanymi rekomendacjami, bazującymi na tym, co ta konkretna grupa kupuje najchętniej.
 ---
 
 ## ⚙️ Transformacje ETL (Data Engineering)
@@ -192,13 +184,4 @@ erDiagram
 *   **Pandas & NumPy:** Ekstrakcja, czyszczenie i kompleksowe transformacje na DataFrame'ach.
 *   **Jupyter Notebook:** Interaktywne środowisko deweloperskie dla procesu ETL.
 *   **Power BI:** Warstwa wizualizacji, modelowanie DAX, tworzenie interaktywnych dashboardów operacyjnych.
-*   **Mermaid:** Dokumentacja schematu bazy danych.
 
----
-
-## 🚀 Jak uruchomić projekt?
-
-1.  **Pobierz dane źródłowe:** Umieść `online_retail_II.xlsx` w folderze `data/raw/`.
-2.  **Uruchom notatnik:** Otwórz i wykonaj wszystkie komórki w `ETL.ipynb`.
-3.  **Otwórz dashboard:** Otwórz plik Power BI (`.pbix`).
-4.  **Odśwież dane:** Wskaż lokalizację nowo wygenerowanych plików CSV i odśwież model.
