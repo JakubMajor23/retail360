@@ -28,7 +28,7 @@ Dashboard przesuwa organizację z podejścia reaktywnego na proaktywne. Zamiast 
 
 ## 🖥️ Architektura Dashboardu — Co odbiorca czyta z danych?
 
-Raport jest ułożony w logiczną ścieżkę: STATUS → ALARM → AKCJA.
+Raport jest ułożony w logiczną ścieżkę: **STATUS** → **ALARM** → **AKCJA**.
 
 ### 1. Health Check (Zdrowie Bazy Klientów)
 **Pytanie:** *"Jak wygląda nasza baza klientów TERAZ?"*
@@ -40,6 +40,7 @@ Raport jest ułożony w logiczną ścieżkę: STATUS → ALARM → AKCJA.
 **Pytanie:** *"Kogo tracimy TERAZ i ile to nas kosztuje?"*
 **Cel:** Identyfikacja klientów wymagających interwencji.
 *   **Zawartość ekranu:** KPI zagrożonego kapitału (CLV) i wskaźnika odejść (Churn Rate). Wykresy dystrybucji ryzyka, ranking rekomendowanych akcji oraz mapa proporcji segmentów. Operacyjna tabela z listą klientów i przypisanymi działaniami ratunkowymi.
+
 *   **Decyzje biznesowe:** Punktowa, precyzyjna alokacja budżetu ratunkowego (np. ekskluzywne rabaty, telefony od handlowców) wyłącznie dla klientów o wysokim CLV i krytycznym Risk Score.
 
 ### 3. Behavior & Patterns (Wzorce Behawioralne)
