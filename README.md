@@ -2,70 +2,77 @@
 
 [![Wersja Polska](https://img.shields.io/badge/Wersja-Polska-red?style=for-the-badge)](README_PL.md)
 
-Retail360 is a comprehensive end-to-end analytical project that transforms raw e-commerce transactional data into a production-ready, 3-page operational dashboard. The project demonstrates the full data lifecycle: from advanced cleaning and extraction (Python/Pandas) to building a dedicated Star Schema (Data Engineering) and professional visualization focused on driving specific business decisions (Power BI).
+Retail360 is an e-commerce analytics project encompassing the ETL process (Python/Pandas), the construction of a Star Schema model, and a visualization layer in the form of a 3-page operational dashboard in Power BI.
+
+The data source for the project is the UCI Online Retail II dataset, containing transactional data from a UK-based e-commerce business offering gifts and homeware, covering the period from December 2009 to December 2011. During the ETL process, raw transactions were enriched with key customer analytics attributes, such as: RFM segmentation, a point-based Risk Score, CLV estimation, and automated CRM action recommendations.
 
 ---
 
-## 📊 Business Case & Project Rationale
+## 📊 Business Context and Project Justification (Business Case)
 
-### 🎯 Who is this for?
-The primary users are **Heads of CRM**, **Customer Strategy Managers**, and **Account Managers**. This report is 100% **Customer-Centric**, prioritizing relationship health and long-term value over simple logistics or financial reporting.
+The report is 100% Customer-Centric.
 
-### ❓ The Problem: "Analytical Myopia"
-Many e-commerce businesses operate reactively, leading to:
-* **"Spray and Pray" Marketing:** Generic campaigns sent to the entire database (e.g., 5,000+ customers) without personalization.
-* **Budget Leakage:** Discounts being sent to "Champions" who would have purchased anyway.
-* **Silent Churn:** Ignoring "At Risk" customers until they have already transitioned to "Lost."
-* **Poor Resource Allocation:** Marketing teams guessing when to communicate and what products to offer.
+### 🎯 Who is this project for?
+The main audience for the report is the **Head of CRM**, **Customer Strategy Manager**, and **Account Managers**.
 
-### 💡 The Solution & Business Value
-This dashboard shifts the organization from **reactive** to **proactive**. Instead of just reporting what happened, it tells managers **what to do next**. It enables precise RFM segmentation, automated Churn Risk scoring, and actionable recommendations that directly impact **Customer Lifetime Value (CLV)** and marketing ROI.
+### ❓ What problem are we solving?
+* **Lack of personalization:** The company often sends generic campaigns to the entire database, which is inefficient.
+* **Wasting budget:** Granting discounts to loyal customers who would have made a purchase anyway.
+* **Silent Churn:** Ignoring at-risk customers until they permanently leave for the competition.
+* **Poor resource allocation:** Marketing activities are undertaken without understanding the hourly and product patterns of individual segments.
+
+### 💡 Solution and Business Value
+The dashboard shifts the organization from a reactive to a proactive approach. Instead of looking at what has already happened, managers are provided with tools telling them what needs to be done right now. This enables precise segmentation (RFM), calculating the risk of churn (Risk Score), and automated action recommendations, which directly translates into saving revenue (Customer Lifetime Value) and optimizing marketing costs.
 
 ---
 
-## 🖥️ Dashboard Architecture: From Insights to Action
+## 🖥️ Dashboard Architecture — What does the user read from the data?
 
-The dashboard follows a logical flow: **STATUS → ALARM → ACTION**.
+The report is structured along a logical path: **STATUS** → **ALARM** → **ACTION**.
 
-### 1. Health Check (Customer Base Vitality)
-**Key Question:** *"What is the state of our customer base RIGHT NOW?"* **Objective:** A 30-second situational overview to identify where the money is and find reasons for concern.
+### 1. Health Check (Customer Base Health)
+**Question:** *"What does our customer base look like NOW?"*
+**Goal:** A 30-second, instant overview of database health and sales trends. The recipient immediately sees where the money is and whether there are any reasons for concern.
+**Screen content:** Key financial and frequency KPIs. Charts contrasting the structure of generated revenues with the volume of customers in specific segments, alongside an analysis of monthly trends.
 
 ![Health Check Dashboard](photos/d1.png)
 
-* **Visuals:** KPI tiles showing active customer ratio and "Top 20% Revenue Share". Bar charts comparing volume vs. revenue structure.
-* **Business Decisions:** Assessing financial security and monitoring macro trends (growing vs. stagnating base).
+**Decision:** A comprehensive assessment of financial stability, allowing verification of which customer groups drive the monthly results, whether the company is overly dependent on the Champions segment, and how the long-term migration of the customer base is progressing.
 
-### 2. Churn Risk (Revenue Salvation)
-**Key Question:** *"Who are we losing RIGHT NOW and what is the cost?"* **Objective:** An operational view to calculate the value of "money at risk" and trigger rescue actions.
+### 2. Churn Risk (Risk of Leaving and Rescue Actions)
+**Question:** *"Who are we losing NOW and how much is it costing us?"*
+**Goal:** Identifying customers who require intervention.
+* **Screen content:** KPIs for capital at risk (CLV) and Churn Rate. Risk distribution charts, a ranking of recommended actions, and a map of segment proportions. An operational table featuring a list of customers and their assigned rescue actions.
 
 ![Churn Risk Dashboard](photos/d2.png)
 
-* **Visuals:** "Total CLV at Risk" tiles, "Risk Tier Distribution" (Healthy, Watchlist, Critical), and a drill-through table of specific customers.
-* **Business Decisions:** Prioritizing Account Manager workflows for "Win-back" campaigns.
+* **Business decisions:** Targeted, precise allocation of the retention budget (e.g., exclusive discounts, phone calls from sales reps) exclusively for customers with high CLV and a critical Risk Score.
 
-### 3. Behavior & Patterns (Campaign Optimization)
-**Key Question:** *"How should we target campaigns to maximize conversion?"* **Objective:** Provide hard data for the Marketing Department.
+### 3. Behavior & Patterns
+**Question:** *"How should we target campaigns to maximize ROI?"*
+**Goal:** Tactical optimization of marketing campaigns.
+* **Screen content:** Interactive heatmap showing the distribution of orders over time (days of the week/hours) and a qualitative analysis of segments (Average Order Value – AOV, Return Rate). Additionally, a ranking of top products.
+
 
 ![Behavior & Patterns Dashboard](photos/d3.png)
 
-* **Visuals:** AOV and Return Rate analysis by segment, purchase heatmap (days/hours), and "Top Products" list.
-* **Business Decisions:** Scheduling targeted newsletters (e.g., Sunday 6:00 PM) based on segment behavior.
-
+* **Business decisions:** Personalization of the communication schedule (e-mail/SMS) tailored to the activity peaks of a given segment, and designing effective marketing campaigns with dedicated recommendations based on what a specific group is most willing to buy.
+  
 ---
 
-## ⚙️ ETL & Data Engineering
+## ⚙️ ETL Transformations (Data Engineering)
 
-The data preparation process (found in `ETL.ipynb`) transforms raw transaction logs (UCI Online Retail II dataset, 2009-2011) into a clean, analytical Star Schema.
+The data preparation process (saved in the `ETL.ipynb` file) transforms the raw dump from the transactional system into a Star Schema model.
 
-### 🧹 Cleaning & Extraction:
-* **Guest Handling:** Assigned `customer_id = 0` to unregistered users instead of deleting them (~23% of total sales).
-* **Noise Removal:** Filtered out operational non-sales entries (POSTAGE, test logs).
-* **Financial Standardization:** Flagged returns and unified product metadata.
+### Key cleaning and transformation steps:
+* **Guest Handling:** We assign `customer_id = 0` for unregistered users (analyzing ~23% of the database).
+* **Noise Cleaning:** Operational transactions (POSTAGE, bank fees) were removed.
+* **Financial standardization:** Returns were flagged and product names were standardized.
 
-### 🧪 Advanced Feature Engineering:
-* **RFM Segmentation:** Programmatic assignment to groups: *Champions, Loyal, Recent Buyers, Promising, At Risk, Lost*.
-* **Risk Score (0-100):** A custom scoring algorithm calculating churn probability based on segment, recency, and frequency.
-* **Automated Recommendations:** Automatically assigns recommended actions (e.g., *Upsell, Win-back, Personal Outreach*).
+### Advanced Feature Engineering:
+* **RFM:** Segmentation into groups: *Champions, Loyal, Recent Buyers, Promising, At Risk, Lost*.
+* **Risk Score:** A point-based algorithm calculating the risk of churn.
+* **Automated Recommendations:** Automatic assignment of recommended actions (e.g., *Upsell, Win-back*).
 
 ---
 
